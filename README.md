@@ -23,7 +23,7 @@ LyricsRuntimeEngine
        ├─ NeteaseProvider (AES+RSA weapi)
        └─ LrcLibClient (public REST)
        │
-GlassesServer (NWListener TCP :8081)
+GlassesServer (RokidSDK)
   └─ WireProtocol (JSON+newline framing)
        └─ sends: snapshot / sync / status / hello_ack
        └─ receives: hello / request_snapshot / request_status / toggle_playback
@@ -51,7 +51,7 @@ GlassesServer (NWListener TCP :8081)
 
 ## Xcode Setup
 
-1. Open `RokidLyrics.xcodeproj` in Xcode 15+
+1. Open `RokidLyrics.xcworkspace` in Xcode 15+ (after running `pod install`) 15+
 2. Select your Team under **Signing & Capabilities**
 3. In **Capabilities**, add **Background Modes → Audio** (already in Info.plist)
 4. Build & run on iPhone
