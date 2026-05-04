@@ -64,7 +64,7 @@ No third-party dependencies — uses only Apple frameworks:
 
 ## Connecting Glasses
 
-1. Make sure the iPhone and glasses are on the **same Wi-Fi network**
+1. *(Glasses now connect automatically over Bluetooth — no TCP port needed.)*
 2. Open the app → **Settings** tab — note the **Phone IP** (e.g., `192.168.1.42`)
 3. On the glasses, open the Rokid Lyrics app and set the server address to `192.168.1.42:8081`
 4. The status bar turns green when connected
@@ -84,3 +84,25 @@ The wire protocol (JSON+newline framed `WireEnvelope`) is identical to the Andro
 
 `togglePlayback` from the glasses works for **Apple Music** via `MPMusicPlayerController.systemMusicPlayer`.  
 For Spotify, YouTube Music, and other apps, the toggle command is received but cannot control third-party playback due to iOS sandbox restrictions.
+
+## SDK Setup
+
+The glasses now connect over **Bluetooth via the Rokid AI glasses SDK** — no Wi-Fi port or TCP server needed.
+
+The only thing left for each app is filling in the three credential constants (`kAppKey`, `kAppSecret`, `kAccessKey`) from [account.rokid.com/#/setting/prove](https://account.rokid.com/#/setting/prove), then running `pod install`.
+
+1. **Get credentials** at <https://account.rokid.com/#/setting/prove> and paste them into the glasses Swift file:
+   ```swift
+   private let kAppKey    = "YOUR_APP_KEY"
+   private let kAppSecret = "YOUR_APP_SECRET"
+   private let kAccessKey = "YOUR_ACCESS_KEY"
+   ```
+
+2. **Install CocoaPods dependencies** from the repo root:
+   ```bash
+   pod install
+   open *.xcworkspace   # always open the .xcworkspace, not .xcodeproj
+   ```
+
+3. *(Glasses now connect automatically over Bluetooth — no TCP port needed.)*
+
